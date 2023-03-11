@@ -1,18 +1,43 @@
 package com.example.hw07032023.Service;
 
 import com.example.hw07032023.Model.User;
+import com.example.hw07032023.Model.UserDTO;
 import com.example.hw07032023.Repository.UserRepository;
-import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.Map;
+
 @Service
-@RequiredArgsConstructor
 public class UserServiceImpl implements UserService {
 
-	private UserRepository userRepository;
+	private final UserRepository userRepository;
+
+	public UserServiceImpl(UserRepository userRepository) {
+		this.userRepository = userRepository;
+	}
 
 	@Override
 	public boolean checkUserExist(User user) {
-		return false;
+		return userRepository.checkUserExist(user);
+	}
+
+	@Override
+	public boolean addUserToDB(UserDTO userDTO) {
+		return userRepository.addUserToDB(userDTO);
+	}
+
+	@Override
+	public User getUserByName(String name) {
+		return userRepository.getUserByName(name);
+	}
+
+	@Override
+	public Map<Long, User> getAll() {
+		return userRepository.getAll();
+	}
+
+	@Override
+	public boolean deleteUserFromDB(String name, String password) {
+		return userRepository.deleteUserFromDB(name, password);
 	}
 }
