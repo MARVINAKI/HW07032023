@@ -12,12 +12,12 @@ class UserRepositoryTest {
 
 	@BeforeEach
 	void createTemporaryTestsUsersInDB() {
-		out.addUserToDB(new UserDTO(userConstant.getUserInDB().getName(), userConstant.getUserInDB().getDomain(), "testsPassword"));
+		out.addUserToDB(new UserDTO(userConstant.getUserInDB().getName(), userConstant.getUserInDB().getDomain(), userConstant.getTestsPassword()));
 	}
 
 	@AfterEach
 	void deleteTemporaryTestsUsersFromDB() {
-		out.deleteUserFromDB(userConstant.getTestsNameInDB(), "testsPassword");
+		out.deleteUserFromDB(userConstant.getTestsNameInDB(), userConstant.getTestsPassword());
 	}
 
 	@Test
@@ -32,6 +32,6 @@ class UserRepositoryTest {
 
 	@Test
 	void shouldCheckDoubleOfUsersInDB() {
-		Assertions.assertFalse(out.addUserToDB(new UserDTO(userConstant.getUserInDB().getName(), userConstant.getUserInDB().getDomain(), "testsPassword")));
+		Assertions.assertFalse(out.addUserToDB(new UserDTO(userConstant.getUserInDB().getName(), userConstant.getUserInDB().getDomain(), userConstant.getTestsPassword())));
 	}
 }
