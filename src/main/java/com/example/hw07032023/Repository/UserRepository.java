@@ -1,19 +1,21 @@
 package com.example.hw07032023.Repository;
 
 import com.example.hw07032023.Model.User;
+import com.example.hw07032023.Model.UserDTO;
 import org.springframework.stereotype.Repository;
 
-import java.util.List;
+import java.util.Map;
 
 @Repository
 public interface UserRepository {
 
-	void save(User user);
+	boolean checkUserExist(User user);
 
-	User find(User user);
+	boolean addUserToDB(UserDTO userDTO);
 
-	List<String> findAll();
+	User getUserByName(String name);
 
-	boolean delete(User user);
+	Map<Long, User> getAll();
 
+	boolean deleteUserFromDB(String name, String password);
 }

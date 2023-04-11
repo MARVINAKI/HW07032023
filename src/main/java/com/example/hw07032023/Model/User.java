@@ -11,5 +11,5 @@ public class User {
 	@NotNull
 	private String name;
 	@NotNull
-	private String password;
+	private String domain;
 }
